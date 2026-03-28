@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Axe = {
   id: number;
@@ -162,106 +163,176 @@ export default function AxesSection() {
       ></div>
 
       <div className="container mx-auto px-4 md:px-12 lg:px-24 relative z-10">
-        <div className="w-14 h-14 md:w-16 md:h-16 relative rounded-full overflow-hidden border-2 border-primary-medium bg-secondary-blue-vlight flex items-center justify-center p-1 mb-8 mx-auto">
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-14 h-14 md:w-16 md:h-16 relative rounded-full overflow-hidden border-2 border-primary-medium bg-secondary-blue-vlight flex items-center justify-center p-1 mb-8 mx-auto"
+        >
           <div className="text-[10px] text-center font-bold text-primary-dark leading-none">
              LE MONDE<br/>RURAL<br/>ASBL
           </div>
-        </div>
-        <h2 className="text-white text-4xl md:text-6xl font-bold text-center mb-16 md:mb-24 drop-shadow-lg">
+        </motion.div>
+        
+        <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-white text-4xl md:text-6xl font-bold text-center mb-16 md:mb-24 drop-shadow-lg"
+        >
           Nos Axes d&apos;Intervention
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-4">
+        <motion.div 
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+                hidden: { opacity: 0 },
+                show: {
+                    opacity: 1,
+                    transition: {
+                        staggerChildren: 0.1
+                    }
+                }
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-4"
+        >
           {interventionAxes.map((axe) => (
-            <div 
+            <motion.div 
               key={axe.id} 
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: { opacity: 1, y: 0 }
+              }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedAxe(axe)}
-              className={`${axe.color} rounded-[24px] p-8 flex flex-col items-center text-center shadow-xl hover:scale-105 transition-all duration-300 min-h-[320px] justify-between group cursor-pointer`}
+              className={`${axe.color} rounded-[24px] p-6 flex flex-col items-center text-center shadow-xl transition-all duration-300 min-h-[260px] justify-between group cursor-pointer`}
             >
               <div className="text-white group-hover:scale-110 transition-transform">
                 {axe.icon && <div className={axe.color.includes('vlight') ? 'text-primary-dark' : 'text-white'}>{axe.icon}</div>}
               </div>
               
-              <div className="flex flex-col gap-4 flex-1 mt-6 justify-center">
-                <span className={`text-3xl md:text-4xl font-black ${axe.color.includes('vlight') ? 'text-primary-dark/40' : 'text-white/40'}`}>
+              <div className="flex flex-col gap-3 flex-1 mt-4 justify-center">
+                <span className={`text-2xl md:text-3xl font-black ${axe.color.includes('vlight') ? 'text-primary-dark/40' : 'text-white/40'}`}>
                   {axe.id}.
                 </span>
-                <h4 className={`text-lg md:text-xl font-bold leading-snug uppercase ${axe.color.includes('vlight') ? 'text-primary-dark' : 'text-white'}`}>
+                <h4 className={`text-base md:text-lg font-bold leading-snug uppercase ${axe.color.includes('vlight') ? 'text-primary-dark' : 'text-white'}`}>
                   {axe.title}
                 </h4>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Modal Integration */}
-      {selectedAxe && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300" 
-            onClick={() => setSelectedAxe(null)}
-          />
-          
-          {/* Modal Container */}
-          <div className="bg-white rounded-[40px] md:rounded-[48px] overflow-hidden max-w-6xl w-full h-full max-h-[85vh] relative z-10 flex flex-col md:flex-row shadow-2xl animate-in fade-in zoom-in-95 duration-300">
-            {/* Left Content Column */}
-            <div className={`w-full md:w-1/2 p-8 md:p-16 flex flex-col ${selectedAxe.color.split(' ')[0]} relative`}>
-              {/* Close Button Mobile */}
-              <button 
+      {/* Modal Integration with Framer Motion */}
+      <AnimatePresence>
+        {selectedAxe && (
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-10"
+            >
+            {/* Backdrop */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/60 backdrop-blur-md" 
                 onClick={() => setSelectedAxe(null)}
-                className="absolute top-6 right-6 md:hidden text-white/80 hover:text-white"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+            />
+            
+            {/* Modal Container */}
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="bg-white rounded-[40px] md:rounded-[48px] overflow-hidden max-w-6xl w-full h-full max-h-[85vh] relative z-10 flex flex-col md:flex-row shadow-2xl"
+            >
+                {/* Left Content Column */}
+                <div className={`w-full md:w-1/2 p-8 md:p-16 flex flex-col ${selectedAxe.color.split(' ')[0]} relative`}>
+                {/* Close Button Mobile */}
+                <button 
+                    onClick={() => setSelectedAxe(null)}
+                    className="absolute top-6 right-6 md:hidden text-white/80 hover:text-white"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
 
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="bg-white w-20 h-20 md:w-24 md:h-24 rounded-[20px] md:rounded-[24px] flex items-center justify-center mb-8 shadow-inner overflow-hidden">
-                  <div className={selectedAxe.color.includes('vlight') ? 'text-primary-dark' : 'text-primary-medium'}>
-                    {selectedAxe.icon}
-                  </div>
+                <div className="flex-1 flex flex-col justify-center">
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="bg-white w-20 h-20 md:w-24 md:h-24 rounded-[20px] md:rounded-[24px] flex items-center justify-center mb-8 shadow-inner overflow-hidden"
+                    >
+                    <div className={selectedAxe.color.includes('vlight') ? 'text-primary-dark' : 'text-primary-medium'}>
+                        {selectedAxe.icon}
+                    </div>
+                    </motion.div>
+
+                    <div className="space-y-6">
+                    <motion.h3 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className={`text-white/40 text-2xl md:text-3xl font-black ${selectedAxe.color.includes('vlight') ? 'text-primary-dark/40' : ''}`}
+                    >
+                        {selectedAxe.id}. {selectedAxe.title.split('&')[0]}
+                    </motion.h3>
+                    <motion.h2 
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 }}
+                        className={`text-white text-3xl md:text-5xl font-bold leading-tight ${selectedAxe.color.includes('vlight') ? 'text-primary-dark' : ''}`}
+                    >
+                        {selectedAxe.title}
+                    </motion.h2>
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 }}
+                        className={`text-white/90 text-lg leading-relaxed font-light ${selectedAxe.color.includes('vlight') ? 'text-primary-dark/90' : ''}`}
+                    >
+                        {selectedAxe.description}
+                    </motion.p>
+                    </div>
+                </div>
                 </div>
 
-                <div className="space-y-6">
-                  <h3 className={`text-white/40 text-2xl md:text-3xl font-black ${selectedAxe.color.includes('vlight') ? 'text-primary-dark/40' : ''}`}>
-                    {selectedAxe.id}. {selectedAxe.title.split('&')[0]}
-                  </h3>
-                  <h2 className={`text-white text-3xl md:text-5xl font-bold leading-tight ${selectedAxe.color.includes('vlight') ? 'text-primary-dark' : ''}`}>
-                    {selectedAxe.title}
-                  </h2>
-                  <p className={`text-white/90 text-lg md:text-2xl leading-relaxed font-light ${selectedAxe.color.includes('vlight') ? 'text-primary-dark/90' : ''}`}>
-                    {selectedAxe.description}
-                  </p>
+                {/* Right Image Column */}
+                <div className="hidden md:block w-1/2 relative bg-zinc-100">
+                <Image 
+                    src={selectedAxe.detailImage} 
+                    alt={selectedAxe.title} 
+                    fill
+                    className="object-cover"
+                />
+                
+                {/* Close Button Desktop */}
+                <button 
+                    onClick={() => setSelectedAxe(null)}
+                    className="absolute top-8 right-8 bg-black/20 hover:bg-black/40 backdrop-blur-md text-white p-3 rounded-full transition-all group"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:rotate-90 transition-transform">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
                 </div>
-              </div>
-            </div>
-
-            {/* Right Image Column */}
-            <div className="hidden md:block w-1/2 relative bg-zinc-100">
-              <Image 
-                src={selectedAxe.detailImage} 
-                alt={selectedAxe.title} 
-                fill
-                className="object-cover"
-              />
-              
-              {/* Close Button Desktop */}
-              <button 
-                onClick={() => setSelectedAxe(null)}
-                className="absolute top-8 right-8 bg-black/20 hover:bg-black/40 backdrop-blur-md text-white p-3 rounded-full transition-all group"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:rotate-90 transition-transform">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+            </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
+
 
