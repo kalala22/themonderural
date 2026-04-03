@@ -3,104 +3,294 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 
 export default function Header() {
   const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("accueil");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Scroll Progress Logic
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  // Close menu when pathname changes
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   const navLinks = [
-    { name: "Acceuil", href: "/" },
-    { name: "Qui sommes-nous", href: "#qui-sommes-nous" },
-    { name: "Actualités", href: "#actualites" },
-    { name: "Nos actions", href: "#nos-actions" },
+    { name: "Accueil", href: "/#accueil" },
+    { name: "Qui sommes-nous", href: "/#qui-sommes-nous" },
+    { name: "Actualités", href: "/#actualites" },
+    { name: "Nos actions", href: "/#nos-actions" },
+    { name: "Galerie", href: "/galerie" },
   ];
 
+  useEffect(() => {
+    // Only run scroll spy on the homepage
+    if (pathname !== "/") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setActiveSection("");
+      return;
+    }
+
+    const sections = [
+      "accueil",
+      "qui-sommes-nous",
+      "actualites",
+      "nos-actions",
+      "galerie",
+    ];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px", // Triggers when section is in the top/middle of the viewport
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
+
   return (
-    <motion.header 
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm px-4 md:px-12 py-3 flex items-center justify-between"
-    >
-      {/* Logo Placeholder */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="flex items-center gap-4"
+    <>
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-accent-gold origin-left z-200"
+        style={{ scaleX }}
+      />
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="fixed top-0 left-0 right-0 z-100 bg-white/95 backdrop-blur-md shadow-sm px-4 md:px-12  flex items-center justify-between"
       >
-        {/*<Image src="/LMR Logo-02.png" alt="Logo" width={100} height={100} />*/}
-        <div className="font-bold text-xl text-primary-dark tracking-tighter uppercase">
-          Le Monde <span className="text-accent-gold">Rural</span>
-        </div>
-      </motion.div>
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="flex items-center gap-4"
+        >
+          <Link href="/" className="flex items-center gap-2">
+            <div className="relative w-24 h-24">
+              <Image
+                src="/LMRA Logo Site.png"
+                alt="Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </Link>
+        </motion.div>
 
-      {/* Navigation */}
-      <nav className="hidden lg:flex items-center gap-10">
-        {navLinks.map((link, index) => {
-          const isActive = pathname === link.href;
-          return (
-            <motion.div
-              key={link.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
-            >
-              <Link
-                href={link.href}
-                className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${
-                  isActive ? "text-primary-dark" : "hover:text-primary-medium"
-                }`}
+        {/* Navigation - Desktop */}
+        <nav className="hidden lg:flex items-center gap-10">
+          {navLinks.map((link, index) => {
+            const isAnchor = link.href.startsWith("/#");
+            const sectionId = isAnchor ? link.href.split("#")[1] : "";
+            const isActive =
+              pathname === "/"
+                ? activeSection === sectionId
+                : pathname === link.href;
+
+            return (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
               >
-                {link.name}
-                <motion.div 
-                  className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  } transition-all duration-300`}
-                />
-              </Link>
-            </motion.div>
-          );
-        })}
-      </nav>
+                <Link
+                  href={link.href}
+                  className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${
+                    isActive ? "text-primary-dark" : "hover:text-primary-medium"
+                  }`}
+                >
+                  {link.name}
+                  <motion.div
+                    className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    } transition-all duration-300`}
+                  />
+                </Link>
+              </motion.div>
+            );
+          })}
+        </nav>
 
-      {/* CTA Button */}
-      <motion.button 
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ delay: 1, duration: 0.4 }}
-        className="bg-accent-gold text-white px-5 md:px-8 py-2 md:py-3 rounded-[12px] font-bold text-sm md:text-base hover:brightness-110 transition-all shadow-sm"
-      >
-        Faire un Don
-      </motion.button>
+        {/* CTA Button - Desktop */}
+        <motion.button
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ delay: 1, duration: 0.4 }}
+          className="lg:block bg-accent-gold text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm"
+        >
+          Faire un Don
+        </motion.button>
 
-      {/* Mobile Menu Icon (Simple version) */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="lg:hidden"
-      >
-        <button className="text-primary-dark p-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-8 h-8"
+        {/* Mobile Menu Icon */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="lg:hidden"
+        >
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-primary-dark p-2 hover:bg-zinc-100 rounded-full transition-colors relative z-110"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-      </motion.div>
-    </motion.header>
+            <AnimatePresence mode="wait">
+              {isMenuOpen ? (
+                <motion.svg
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2.5}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </motion.svg>
+              ) : (
+                <motion.svg
+                  key="menu"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 1.2, opacity: 0 }}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </motion.svg>
+              )}
+            </AnimatePresence>
+          </button>
+        </motion.div>
+      </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-100 bg-white/98 backdrop-blur-xl lg:hidden flex flex-col items-center justify-center p-8 pt-24"
+          >
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
+              <div className="absolute -top-1/4 -right-1/4 w-full h-full rounded-full bg-accent-gold blur-3xl" />
+              <div className="absolute -bottom-1/4 -left-1/4 w-full h-full rounded-full bg-primary-medium blur-3xl opacity-20" />
+            </div>
+
+            <nav className="flex flex-col gap-8 text-center w-full max-w-sm">
+              {navLinks.map((link, i) => {
+                const isAnchor = link.href.startsWith("/#");
+                const sectionId = isAnchor ? link.href.split("#")[1] : "";
+                const isActive =
+                  pathname === "/"
+                    ? activeSection === sectionId
+                    : pathname === link.href;
+
+                return (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`text-3xl font-bold transition-all ${
+                        isActive
+                          ? "text-primary-dark"
+                          : "text-zinc-400 hover:text-primary-medium"
+                      }`}
+                    >
+                      <span className="relative">
+                        {link.name}
+                        {isActive && (
+                          <motion.span
+                            layoutId="active-mobile-indicator"
+                            className="absolute -bottom-2 left-0 right-0 h-1 bg-accent-gold rounded-full"
+                          />
+                        )}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="pt-8"
+              >
+                <button className="w-full bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
+                  Faire un Don
+                </button>
+              </motion.div>
+            </nav>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="mt-20 flex flex-col items-center gap-4"
+            >
+              <div className="w-12 h-12 relative rounded-full overflow-hidden border border-zinc-100 flex items-center justify-center p-1 bg-zinc-50 shadow-inner">
+                <div className="text-[8px] text-center font-bold text-primary-dark leading-none">
+                  LE MONDE
+                  <br />
+                  RURAL
+                </div>
+              </div>
+              <p className="text-zinc-400 text-sm font-medium uppercase tracking-[0.2em]">
+                ASBL - RDC
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
-
