@@ -10,7 +10,8 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Le Monde Rural ASBL | Pour un monde rural prospère",
-  description: "Association Sans But Lucratif dédiée au développement rural en République Démocratique du Congo.",
+  description:
+    "Association Sans But Lucratif dédiée au développement rural en République Démocratique du Congo.",
 };
 
 export default function RootLayout({
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      suppressHydrationWarning
       className={`${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }
-
