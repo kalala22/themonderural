@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import NewsSection from "@/components/NewsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import AxesSection from "@/components/AxesSection";
+import GallerySection from "@/components/GallerySection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
         <VisionMissionSection />
         <AxesSection />
         <NewsSection />
+        <GallerySection />
       </main>
 
       <Footer />

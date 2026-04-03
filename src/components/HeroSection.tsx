@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2000&auto=format&fit=crop')`,
+            backgroundImage: `url('assets/AZZ_1913.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

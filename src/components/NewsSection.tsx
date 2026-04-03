@@ -1,12 +1,21 @@
 "use client";
 
 /* eslint-disable react/no-unescaped-entities */
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 
 export default function NewsSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const yImg = useTransform(scrollYProgress, [0, 1], [-50, 50]);
 
   const slides = [
     {
@@ -210,7 +219,8 @@ export default function NewsSection() {
   return (
     <section
       id="actualites"
-      className="relative w-full py-24 md:py-32 overflow-hidden flex items-center bg-primary-dark"
+      ref={containerRef}
+      className="relative w-full py-24 md:py-48 overflow-hidden flex items-center bg-primary-dark"
     >
       {/* Background with Dark Green Overlay */}
       <div className="absolute inset-0 bg-primary-dark overflow-hidden">
@@ -219,10 +229,10 @@ export default function NewsSection() {
 
       <div className="container mx-auto px-6 md:px-16 lg:px-24 xl:px-32 relative z-10">
         <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-150px" }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
             className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 transition-all duration-700"
         >
           {/* Text Content */}
@@ -262,9 +272,10 @@ export default function NewsSection() {
               </AnimatePresence>
             </div>
 
-            {/* Navigation Controls */}
-            <div className="flex items-center gap-8 pt-8">
-              <div className="flex gap-4">
+            {/* Navigation Controls and Call to Action */}
+            <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-8 pt-8 border-t border-white/10 mt-4">
+              <div className="flex items-center gap-8">
+                <div className="flex gap-4">
                 <button
                   onClick={prevSlide}
                   className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-accent-gold hover:border-accent-gold transition-all duration-300 group"
@@ -320,6 +331,24 @@ export default function NewsSection() {
                 ))}
               </div>
             </div>
+              
+            <Link 
+                href="/conferences"
+                className="xl:ml-auto group flex items-center gap-2 px-6 py-3.5 bg-accent-gold/90 text-primary-dark font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,200,87,0.3)]"
+              >
+                <span>Découvrir nos conférences</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2.5}
+                  stroke="currentColor"
+                  className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
           {/* Featured Image Column */}
@@ -331,21 +360,23 @@ export default function NewsSection() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 0.6 }}
-                  className="relative aspect-[4/3] rounded-[40px] md:rounded-[48px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-4 border-white/5 group-hover:border-accent-gold/20 transition-all duration-500"
+                  className="relative aspect-[4/3] rounded-[40px] md:rounded-[48px] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] border-4 border-white/5 group-hover:border-accent-gold/20 transition-all duration-500 z-10 bg-primary-dark"
               >
-                <Image
-                  src={slides[currentSlide].image}
-                  alt={slides[currentSlide].headline}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <motion.div style={{ y: yImg }} className="absolute inset-0 h-[120%] -top-[10%]">
+                  <Image
+                    src={slides[currentSlide].image}
+                    alt={slides[currentSlide].headline}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
                 <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent"></div>
               </motion.div>
             </AnimatePresence>
 
             {/* Background Decorative Element */}
             <div
-              className={`absolute -z-10 -bottom-6 -right-6 w-1/2 h-1/2 rounded-full blur-[80px] transition-colors duration-1000 ${
+              className={`absolute z-0 -bottom-6 -right-6 w-1/2 h-1/2 rounded-full blur-[80px] transition-colors duration-1000 ${
                 currentSlide % 2 === 0
                   ? "bg-primary-medium/30"
                   : "bg-accent-gold/10"
