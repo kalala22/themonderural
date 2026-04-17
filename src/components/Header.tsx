@@ -95,6 +95,7 @@ export default function Header() {
                 src="/LMRA Logo Site.png"
                 alt="Logo"
                 fill
+                sizes="96px"
                 className="object-contain"
               />
             </div>

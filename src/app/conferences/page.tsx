@@ -14,14 +14,15 @@ export default function ConferencesPage() {
       date: "14 Juin 2025",
       location: "Université Protestante au Congo (UPC), Kinshasa",
       description:
-        "Le forum inaugural de l'ASBL Le Monde Rural, marquant officiellement la sortie publique de l'organisation. Une réflexion profonde sur le déplacement massif des populations vers Kinshasa et ses conséquences sur l'urbanisation, l'économie et le tissu social.",
+        "Forum inaugural marquant la sortie officielle de l'ASBL. Une analyse du déséquilibre entre Kinshasa (15M d'habitants) et l'arrière-pays, mettant en lumière le besoin urgent de revitaliser les zones rurales pour stabiliser les populations et assurer un développement équilibré.",
       image:
         "https://images.unsplash.com/photo-1591115765373-520b7a08332a?q=80&w=2000&auto=format&fit=crop",
       objectives: [
-        "Analyser les causes profondes de l'exode rural en RDC.",
-        "Mesurer les conséquences sur Kinshasa et ses habitants.",
-        "Proposer des actions concrètes en faveur du développement rural.",
-        "Lancer officiellement l'ASBL Le Monde Rural.",
+        "Analyse des causes profondes de l'exode rural et son impact sur l'urbanisation anarchique de Kinshasa.",
+        "Soutien à l'agriculture familiale : Accès aux intrants et création de coopératives locales.",
+        "Infrastructures de base : Plaidoyer pour le désenclavement des villages (routes, solaire, eau).",
+        "Formation & Entrepreneuriat : Création de centres ruraux et projets d'agro-transformation.",
+        "Sensibilisation & Plaidoyer : Dialogue avec les autorités pour un équilibre ville-campagne.",
       ],
     },
     {
@@ -31,13 +32,32 @@ export default function ConferencesPage() {
       date: "4 Novembre 2025",
       location: "Université Technologique Bel Campus",
       description:
-        "Participation au Forum Observatoire économique et social, organisé par DRC Afrivision Think Tank. Une occasion de porter haut la voix du monde rural et de défendre les enjeux de la jeunesse villageoise.",
+        "Participation au Forum Observatoire organisé par DRC Afrivision Think Tank. Nous avons présenté la SNIJV (Stratégie Nationale Intégrée pour la Jeunesse Villageoise 2026-2036) pour placer les jeunes, qui représentent 60% de la population rurale, au cœur de la souveraineté et de la transformation durable de la RDC.",
       image:
-        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop",
       objectives: [
-        "Contribuer aux réflexions sur un avenir durable.",
-        "Défendre les intérêts des populations rurales.",
-        "Promouvoir la bonne gouvernance locale.",
+        "Lancement de la Stratégie Nationale Intégrée pour la Jeunesse Villageoise (SNIJV 2026-2036).",
+        "Axe 1 : Éducation & Autonomisation (Filières techniques et lutte contre l'insécurité alimentaire).",
+        "Axe 2 : Accès à la terre & entrepreneuriat agricole (Valorisation des 80 M ha agricoles).",
+        "Axe 3 : Santé & Bien-être (Infrastructures rurales et santé reproductive).",
+        "Axe 4 : Leadership & Participation (Positionnement des jeunes dans les décisions locales).",
+        "Axe 5 : Culture & Sport (Valorisation des savoirs locaux et tourisme rural).",
+      ],
+    },
+    {
+      id: 3,
+      title: "Mission de terrain : Centre Mbankana (Maluku)",
+      date: "Mai 2025",
+      location: "Centre Mbankana, Commune de Maluku, Kinshasa",
+      description:
+        "Une immersion au cœur des réalités rurales avec les étudiants en économie rurale. Loin des bureaux, nous avons confronté la théorie aux défis du terrain et évalué la résilience des paysans face aux réalités locales, notamment l'impact du phénomène Mobondo.",
+      image:
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop",
+      objectives: [
+        "Confrontation de la théorie économique aux réalités pratiques du terrain.",
+        "Évaluation de l'impact du phénomène Mobondo sur l'activité agricole locale.",
+        "Analyse de la résilience des petits exploitants agricoles de Maluku.",
+        "Renforcement des capacités d'observation et d'écoute des futurs experts ruraux.",
       ],
     },
   ];
