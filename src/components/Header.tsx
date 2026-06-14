@@ -28,8 +28,8 @@ export default function Header() {
   const navLinks = [
     { name: "Accueil", href: "/#accueil" },
     { name: "Qui sommes-nous", href: "/#qui-sommes-nous" },
-    { name: "Actualités", href: "/#actualites" },
     { name: "Nos actions", href: "/#nos-actions" },
+    { name: "Actualités", href: "/#actualites" },
     { name: "Galerie", href: "/galerie" },
   ];
 
@@ -76,19 +76,9 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 h-1 bg-accent-gold origin-left z-200"
         style={{ scaleX }}
       />
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-0 left-0 right-0 z-100 bg-white/95 backdrop-blur-md shadow-sm px-4 md:px-12  flex items-center justify-between"
-      >
+      <header className="fixed top-0 left-0 right-0 z-100 bg-white/95 backdrop-blur-md shadow-sm px-4 md:px-12 flex items-center justify-between">
         {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="flex items-center gap-4"
-        >
+        <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-24 h-24">
               <Image
@@ -100,11 +90,11 @@ export default function Header() {
               />
             </div>
           </Link>
-        </motion.div>
+        </div>
 
         {/* Navigation - Desktop */}
         <nav className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link, index) => {
+          {navLinks.map((link) => {
             const isAnchor = link.href.startsWith("/#");
             const sectionId = isAnchor ? link.href.split("#")[1] : "";
             const isActive =
@@ -113,49 +103,31 @@ export default function Header() {
                 : pathname === link.href;
 
             return (
-              <motion.div
+              <Link
                 key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1 }}
+                href={link.href}
+                className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${
+                  isActive ? "text-primary-dark" : "hover:text-primary-medium"
+                }`}
               >
-                <Link
-                  href={link.href}
-                  className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${
-                    isActive ? "text-primary-dark" : "hover:text-primary-medium"
-                  }`}
-                >
-                  {link.name}
-                  <motion.div
-                    className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    } transition-all duration-300`}
-                  />
-                </Link>
-              </motion.div>
+                {link.name}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${
+                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                  } transition-all duration-300`}
+                />
+              </Link>
             );
           })}
         </nav>
 
         {/* CTA Button - Desktop */}
-        <motion.button
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ delay: 1, duration: 0.4 }}
-          className="lg:block bg-accent-gold text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm"
-        >
+        <button className="lg:block bg-accent-gold text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm">
           Faire un Don
-        </motion.button>
+        </button>
 
         {/* Mobile Menu Icon */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          className="lg:hidden"
-        >
+        <div className="lg:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-primary-dark p-2 hover:bg-zinc-100 rounded-full transition-colors relative z-110"
@@ -202,8 +174,8 @@ export default function Header() {
               )}
             </AnimatePresence>
           </button>
-        </motion.div>
-      </motion.header>
+        </div>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -222,7 +194,7 @@ export default function Header() {
             </div>
 
             <nav className="flex flex-col gap-8 text-center w-full max-w-sm">
-              {navLinks.map((link, i) => {
+              {navLinks.map((link) => {
                 const isAnchor = link.href.startsWith("/#");
                 const sectionId = isAnchor ? link.href.split("#")[1] : "";
                 const isActive =
@@ -231,12 +203,7 @@ export default function Header() {
                     : pathname === link.href;
 
                 return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + i * 0.05 }}
-                  >
+                  <div key={link.name}>
                     <Link
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
@@ -256,28 +223,18 @@ export default function Header() {
                         )}
                       </span>
                     </Link>
-                  </motion.div>
+                  </div>
                 );
               })}
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="pt-8"
-              >
+              <div className="pt-8">
                 <button className="w-full bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
                   Faire un Don
                 </button>
-              </motion.div>
+              </div>
             </nav>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="mt-20 flex flex-col items-center gap-4"
-            >
+            <div className="mt-20 flex flex-col items-center gap-4">
               <div className="w-12 h-12 relative rounded-full overflow-hidden border border-zinc-100 flex items-center justify-center p-1 bg-zinc-50 shadow-inner">
                 <div className="text-[8px] text-center font-bold text-primary-dark leading-none">
                   LE MONDE
@@ -288,7 +245,7 @@ export default function Header() {
               <p className="text-zinc-400 text-sm font-medium uppercase tracking-[0.2em]">
                 ASBL - RDC
               </p>
-            </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

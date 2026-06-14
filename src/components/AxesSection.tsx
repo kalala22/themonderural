@@ -145,7 +145,7 @@ export default function AxesSection() {
         "Promouvoir l'égalité des chances et le leadership féminin. Nos programmes visent à lever les barrières socio-économiques, à prévenir les violences basées sur le genre et à soutenir l'éducation des filles.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_5.png"
           alt="Genre & Autonomisation des femmes et filles"
           fill
           sizes="50vw"
@@ -199,7 +199,7 @@ export default function AxesSection() {
         "Assurer la sécurité et la dignité des personnes les plus fragiles (orphelins, personnes âgées, handicapés). Nous mettons en place des filets sociaux et des programmes de réinsertion communautaire.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_7.png"
           alt="Protection des groupes vulnérables"
           fill
           sizes="50vw"
@@ -226,7 +226,7 @@ export default function AxesSection() {
         "Garantir un accès durable à l'eau de qualité et à l'hygiène. Nous construisons des forages, des systèmes d'adduction d'eau et promouvons les bonnes pratiques d'assainissement pour réduire les maladies hydriques.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_8.png"
           alt="Eau potable & Assainissement"
           fill
           sizes="50vw"
@@ -253,7 +253,7 @@ export default function AxesSection() {
         "Désenclaver les milieux ruraux par l'amélioration des voies de communication et de l'habitat. Nous participons à la maintenance des pistes rurales et à la promotion de techniques de construction durables.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_9.png"
           alt="Infrastructures rurales & Habitat"
           fill
           sizes="50vw"
@@ -280,7 +280,7 @@ export default function AxesSection() {
         "Renforcer la cohésion sociale à travers les activités culturelles et sportives. Nous soutenons les talents locaux et utilisons le sport comme vecteur de paix et de développement communautaire.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_10.png"
           alt="Domaines connexes (culture, sport, etc.)"
           fill
           sizes="50vw"
