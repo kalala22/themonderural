@@ -106,15 +106,13 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${
-                  isActive ? "text-primary-dark" : "hover:text-primary-medium"
-                }`}
+                className={`text-secondary-dark-teal font-semibold text-base transition-all relative group ${isActive ? "text-primary-dark" : "hover:text-primary-medium"
+                  }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
-                  } transition-all duration-300`}
+                  className={`absolute -bottom-1.5 left-0 h-0.5 bg-accent-gold rounded-full ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                    } transition-all duration-300`}
                 />
               </Link>
             );
@@ -122,9 +120,11 @@ export default function Header() {
         </nav>
 
         {/* CTA Button - Desktop */}
-        <button className="lg:block bg-accent-gold text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm">
-          Faire un Don
-        </button>
+        <Link href="/don" className="hidden lg:block">
+          <button className="bg-accent-gold cursor-pointer text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm">
+            Faire un Don
+          </button>
+        </Link>
 
         {/* Mobile Menu Icon */}
         <div className="lg:hidden">
@@ -187,6 +187,16 @@ export default function Header() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-100 bg-white/98 backdrop-blur-xl lg:hidden flex flex-col items-center justify-center p-8 pt-24"
           >
+            {/* Close Button inside Overlay */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-6 right-6 p-2 text-primary-dark hover:bg-zinc-100 rounded-full transition-colors z-50 cursor-pointer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
               <div className="absolute -top-1/4 -right-1/4 w-full h-full rounded-full bg-accent-gold blur-3xl" />
@@ -207,11 +217,10 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`text-3xl font-bold transition-all ${
-                        isActive
-                          ? "text-primary-dark"
-                          : "text-zinc-400 hover:text-primary-medium"
-                      }`}
+                      className={`text-3xl font-bold transition-all ${isActive
+                        ? "text-primary-dark"
+                        : "text-zinc-400 hover:text-primary-medium"
+                        }`}
                     >
                       <span className="relative">
                         {link.name}
@@ -228,9 +237,11 @@ export default function Header() {
               })}
 
               <div className="pt-8">
-                <button className="w-full bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
-                  Faire un Don
-                </button>
+                <Link href="/don" onClick={() => setIsMenuOpen(false)} className="w-full block">
+                  <button className="w-full cursor-pointer bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
+                    Faire un Don
+                  </button>
+                </Link>
               </div>
             </nav>
 

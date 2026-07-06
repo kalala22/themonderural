@@ -5,6 +5,7 @@ import NewsSection from "@/components/NewsSection";
 import VisionMissionSection from "@/components/VisionMissionSection";
 import AxesSection from "@/components/AxesSection";
 import GallerySection from "@/components/GallerySection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -18,11 +19,10 @@ export default function Home() {
         <AxesSection />
         <NewsSection />
         <GallerySection />
+        <ContactSection />
       </main>
 
       <Footer />
     </div>
   );
 }
-
-
