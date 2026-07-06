@@ -5,9 +5,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { useDonation } from "@/context/DonationContext";
 
 export default function Header() {
   const pathname = usePathname();
+  const { openModal } = useDonation();
   const [activeSection, setActiveSection] = useState("accueil");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -120,11 +122,12 @@ export default function Header() {
         </nav>
 
         {/* CTA Button - Desktop */}
-        <Link href="/don" className="hidden lg:block">
-          <button className="bg-accent-gold cursor-pointer text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm">
-            Faire un Don
-          </button>
-        </Link>
+        <button 
+          onClick={openModal}
+          className="hidden lg:block bg-accent-gold cursor-pointer text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm"
+        >
+          Faire un Don
+        </button>
 
         {/* Mobile Menu Icon */}
         <div className="lg:hidden">
@@ -237,20 +240,27 @@ export default function Header() {
               })}
 
               <div className="pt-8">
-                <Link href="/don" onClick={() => setIsMenuOpen(false)} className="w-full block">
-                  <button className="w-full cursor-pointer bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95">
-                    Faire un Don
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    openModal();
+                  }}
+                  className="w-full block cursor-pointer bg-accent-gold text-white px-8 py-4 rounded-[16px] font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all active:scale-95"
+                >
+                  Faire un Don
+                </button>
               </div>
             </nav>
 
             <div className="mt-20 flex flex-col items-center gap-4">
               <div className="w-12 h-12 relative rounded-full overflow-hidden border border-zinc-100 flex items-center justify-center p-1 bg-zinc-50 shadow-inner">
                 <div className="text-[8px] text-center font-bold text-primary-dark leading-none">
-                  LE MONDE
-                  <br />
-                  RURAL
+                  <Image
+                    src="/logo.png"
+                    alt="Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
               <p className="text-zinc-400 text-sm font-medium uppercase tracking-[0.2em]">

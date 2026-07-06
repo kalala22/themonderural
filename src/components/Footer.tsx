@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, ArrowRight, Heart } from "lucide-react";
 import { useState } from "react";
+import { useDonation } from "@/context/DonationContext";
 
 // Lucide-react no longer ships brand icons.
 // Lightweight inline SVGs for social media.
@@ -43,6 +44,7 @@ function XIcon({ className }: { className?: string }) {
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const { openModal } = useDonation();
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -208,13 +210,13 @@ export default function Footer() {
 
             {/* Donation CTA */}
             <div className="pt-2">
-              <Link
-                href="/don"
-                className="group flex items-center justify-center gap-2 w-full bg-accent-gold/15 hover:bg-accent-gold border border-accent-gold/30 hover:border-accent-gold text-accent-gold hover:text-primary-dark font-bold py-3.5 px-6 rounded-xl transition-all duration-300"
+              <button
+                onClick={openModal}
+                className="group flex items-center justify-center gap-2 w-full cursor-pointer bg-accent-gold/15 hover:bg-accent-gold border border-accent-gold/30 hover:border-accent-gold text-accent-gold hover:text-primary-dark font-bold py-3.5 px-6 rounded-xl transition-all duration-300"
               >
                 <Heart className="w-4 h-4" />
                 <span>Faire un Don</span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
