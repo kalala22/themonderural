@@ -7,37 +7,37 @@ import { motion } from "framer-motion";
 const images = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1595841696662-5083f30b2063?q=80&w=1024",
+    src: "/assets/agriculture_gallery.png",
     alt: "Agriculture rurale",
     category: "Agriculture"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1488459711615-de64ef5996f6?q=80&w=1024",
+    src: "/assets/education_gallery.png",
     alt: "Education communautaire",
     category: "Éducation"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1024",
+    src: "/assets/health_gallery.png",
     alt: "Santé en milieu rural",
     category: "Santé"
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1024",
+    src: "/assets/environment_gallery.png",
     alt: "Environnement durable",
     category: "Environnement"
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=1024",
+    src: "/assets/social_gallery.png",
     alt: "Autonomisation des femmes",
     category: "Sociaux"
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1529391409740-59f2dee08361?q=80&w=1024",
+    src: "/assets/infrastructure_gallery.png",
     alt: "Infrastructures",
     category: "Infrastructures"
   }
@@ -70,17 +70,17 @@ export default function GallerySection() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="mt-8 md:mt-0"
           >
-            <Link 
+            <Link
               href="/galerie"
               className="group flex items-center gap-3 bg-primary-dark hover:bg-primary-medium text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               Voir plus d&apos;images
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                strokeWidth={2} 
-                stroke="currentColor" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
                 className="w-5 h-5 group-hover:translate-x-1 transition-transform"
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -89,7 +89,7 @@ export default function GallerySection() {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
