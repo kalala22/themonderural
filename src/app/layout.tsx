@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { DonationProvider } from "@/context/DonationContext";
+import DonationModal from "@/components/DonationModal";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,7 +28,10 @@ export default function RootLayout({
       className={`${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        {children}
+        <DonationProvider>
+          {children}
+          <DonationModal />
+        </DonationProvider>
       </body>
     </html>
   );

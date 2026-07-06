@@ -18,7 +18,7 @@ export default function HeroSection() {
       {/* Background Image with Parallax */}
       <motion.div
         style={{ y: y1 }}
-        className="absolute inset-0 bg-primary-dark/40 bg-center bg-cover bg-no-repeat transition-all duration-700"
+        className="absolute inset-0 bg-primary-dark/40 bg-center bg-cover bg-no-repeat"
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
@@ -57,17 +57,17 @@ export default function HeroSection() {
             population congolaise vit en milieu rural.
           </motion.h2> */}
 
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-[1.1] mb-10 drop-shadow-xl"
           >
-            Avec plus d’un Congolais sur deux vivant en zone rurale, investir
-            dans <span className="text-accent-gold">le Monde Rural</span> n’est
-            pas une option : c’est la clé d’un développement national équitable,
+            Avec plus d&apos;un Congolais sur deux vivant en zone rurale, investir
+            dans <span className="text-accent-gold">le Monde Rural</span> n&apos;est
+            pas une option : c&apos;est la clé d&apos;un développement national équitable,
             inclusif et durable.
-          </motion.h2>
+          </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
