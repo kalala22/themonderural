@@ -107,6 +107,7 @@ export default function ConferencesPage() {
                     src={conf.image}
                     alt={conf.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/60 via-transparent to-transparent"></div>

@@ -639,6 +639,7 @@ export default function NewsSection() {
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].headline}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </motion.div>

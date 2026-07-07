@@ -45,6 +45,7 @@ export default function VisionMissionSection() {
                 src="/assets/AZZ_1767.jpg"
                 alt="Notre Vision"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -94,6 +95,7 @@ export default function VisionMissionSection() {
                 src="/assets/AZZ_1913.jpg"
                 alt="Notre Mission"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover "
               />
             </div>

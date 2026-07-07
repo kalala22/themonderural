@@ -88,6 +88,7 @@ export default function Header() {
                 alt="Logo"
                 fill
                 sizes="96px"
+                priority
                 className="object-contain"
               />
             </div>
