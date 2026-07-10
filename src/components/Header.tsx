@@ -257,7 +257,7 @@ export default function Header() {
 
             <div className="mt-20 flex flex-col items-center gap-4">
               <div className="w-12 h-12 relative rounded-full overflow-hidden border border-zinc-100 flex items-center justify-center p-1 bg-zinc-50 shadow-inner">
-                <div className="text-[8px] text-center font-bold text-primary-dark leading-none">
+                <div className="relative w-full h-full text-[8px] text-center font-bold text-primary-dark leading-none">
                   <Image
                     src="/logo.png"
                     alt="Logo"
