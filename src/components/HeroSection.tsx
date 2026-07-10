@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `url('assets/AZZ_1913.jpg')`,
+            backgroundImage: `url('assets/LandingPage.webp')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
