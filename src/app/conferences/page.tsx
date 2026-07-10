@@ -16,7 +16,7 @@ export default function ConferencesPage() {
       description:
         "Forum inaugural marquant la sortie officielle de l'ASBL. Une analyse du déséquilibre entre Kinshasa (15M d'habitants) et l'arrière-pays, mettant en lumière le besoin urgent de revitaliser les zones rurales pour stabiliser les populations et assurer un développement équilibré.",
       image:
-        "https://images.unsplash.com/photo-1591115765373-520b7a08332a?q=80&w=2000&auto=format&fit=crop",
+        "/assets/ForumImage/speakerFideline1.jpeg",
       objectives: [
         "Analyse des causes profondes de l'exode rural et son impact sur l'urbanisation anarchique de Kinshasa.",
         "Soutien à l'agriculture familiale : Accès aux intrants et création de coopératives locales.",
@@ -34,7 +34,7 @@ export default function ConferencesPage() {
       description:
         "Participation au Forum Observatoire organisé par DRC Afrivision Think Tank. Nous avons présenté la SNIJV (Stratégie Nationale Intégrée pour la Jeunesse Villageoise 2026-2036) pour placer les jeunes, qui représentent 60% de la population rurale, au cœur de la souveraineté et de la transformation durable de la RDC.",
       image:
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop",
+        "/assets/ForumImage/speakerFideline2.jpeg",
       objectives: [
         "Lancement de la Stratégie Nationale Intégrée pour la Jeunesse Villageoise (SNIJV 2026-2036).",
         "Axe 1 : Éducation & Autonomisation (Filières techniques et lutte contre l'insécurité alimentaire).",
@@ -52,7 +52,7 @@ export default function ConferencesPage() {
       description:
         "Une immersion au cœur des réalités rurales avec les étudiants en économie rurale. Loin des bureaux, nous avons confronté la théorie aux défis du terrain et évalué la résilience des paysans face aux réalités locales, notamment l'impact du phénomène Mobondo.",
       image:
-        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop",
+        "/assets/ForumImage/centreMbakana.jpeg",
       objectives: [
         "Confrontation de la théorie économique aux réalités pratiques du terrain.",
         "Évaluation de l'impact du phénomène Mobondo sur l'activité agricole locale.",
