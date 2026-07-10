@@ -42,7 +42,7 @@ export default function VisionMissionSection() {
           <div className="relative">
             <div className="h-56 sm:h-64 md:h-72 relative overflow-hidden">
               <Image
-                src="/assets/AZZ_1767.jpg"
+                src="/assets/AZZ_1668.jpg"
                 alt="Notre Vision"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
