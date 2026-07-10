@@ -78,9 +78,10 @@ export default function Header() {
         className="fixed top-0 left-0 right-0 h-1 bg-accent-gold origin-left z-200"
         style={{ scaleX }}
       />
-      <header className="fixed top-0 left-0 right-0 z-100 bg-white/95 backdrop-blur-md shadow-sm px-4 md:px-12 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-4">
+      <header className="fixed top-0 left-0 right-0 z-100 bg-white/95 backdrop-blur-md shadow-sm">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-4">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-24 h-24">
               <Image
@@ -88,6 +89,7 @@ export default function Header() {
                 alt="Logo"
                 fill
                 sizes="96px"
+                priority
                 className="object-contain"
               />
             </div>
@@ -122,7 +124,7 @@ export default function Header() {
         </nav>
 
         {/* CTA Button - Desktop */}
-        <button 
+        <button
           onClick={openModal}
           className="hidden lg:block bg-accent-gold cursor-pointer text-white px-8 py-3 rounded-[12px] font-bold text-base hover:brightness-110 transition-all shadow-sm"
         >
@@ -177,6 +179,7 @@ export default function Header() {
               )}
             </AnimatePresence>
           </button>
+        </div>
         </div>
       </header>
 
@@ -240,7 +243,7 @@ export default function Header() {
               })}
 
               <div className="pt-8">
-                <button 
+                <button
                   onClick={() => {
                     setIsMenuOpen(false);
                     openModal();
@@ -254,7 +257,7 @@ export default function Header() {
 
             <div className="mt-20 flex flex-col items-center gap-4">
               <div className="w-12 h-12 relative rounded-full overflow-hidden border border-zinc-100 flex items-center justify-center p-1 bg-zinc-50 shadow-inner">
-                <div className="text-[8px] text-center font-bold text-primary-dark leading-none">
+                <div className="relative w-full h-full text-[8px] text-center font-bold text-primary-dark leading-none">
                   <Image
                     src="/logo.png"
                     alt="Logo"

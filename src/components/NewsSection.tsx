@@ -45,7 +45,7 @@ export default function NewsSection() {
         </div>
       ),
       image:
-        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000&auto=format&fit=crop",
+        "/assets/MbakanaImage/toujour_pres.jpeg",
     },
     {
       subtitle: "Réalités de terrain",
@@ -82,7 +82,7 @@ export default function NewsSection() {
         </div>
       ),
       image:
-        "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?q=80&w=2000&auto=format&fit=crop",
+        "/assets/MbakanaImage/femme_manioc.jpeg",
     },
     {
       subtitle: "Forum Observatoire",
@@ -112,365 +112,9 @@ export default function NewsSection() {
         </div>
       ),
       image:
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop",
+        "/assets/ForumImage/forumUpc.jpeg",
     },
-    {
-      subtitle: "Jeunesse rurale",
-      headline: "Un rôle incontournable pour la transformation durable",
-      content: (
-        <div className="space-y-4">
-          <p>
-            <span className="font-semibold text-accent-gold">
-              Qui sont les jeunes ?
-            </span>{" "}
-            En RDC, la jeunesse (15–35 ans) représente le cœur de la population
-            active.
-          </p>
-          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-            <p className="font-medium text-accent-gold/90">
-              ➡️ 60 % vivent en zones rurales ou périurbaines : impossible de
-              parler de développement durable sans eux.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Quelques chiffres clés 🇨🇩 :</h4>
-            <ul className="space-y-2 list-disc pl-5 opacity-90">
-              <li>Population : 112,8 millions</li>
-              <li>Actifs (15–64 ans) : 63,2 millions</li>
-              <li>Jeunes actifs (15–24 ans) : 38 %</li>
-            </ul>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      subtitle: "Jeunesse rurale",
-      headline: "Les défis majeurs à relever",
-      content: (
-        <div className="space-y-6">
-          <p>
-            La jeunesse rurale congolaise fait face à des obstacles
-            considérables qui freinent son potentiel et son développement.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              "Faible accès à l'éducation",
-              "Chômage",
-              "Manque d'opportunités",
-              "Exode rural",
-              "Faible accès aux soins",
-              "Quasi-absence de politiques ciblées",
-            ].map((tag, i) => (
-              <span
-                key={i}
-                className="bg-primary-medium/30 border border-white/20 px-3 py-1.5 rounded-full text-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <p className="pt-4 font-medium italic border-t border-white/20 text-accent-gold">
-            Point d’attention : la transformation durable ne se fera pas sans la
-            jeunesse rurale.
-          </p>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      subtitle: "Notre proposition",
-      headline: "Une nouvelle vision pour la jeunesse rurale",
-      content: (
-        <div className="space-y-5">
-          <p>
-            Pour accélérer la transformation durable, nous proposons la mise en
-            place d'un cadre ambitieux :
-          </p>
-          <div className="bg-accent-gold/10 p-5 rounded-2xl border border-accent-gold/20">
-            <h3 className="text-xl font-bold text-accent-gold mb-1">
-              La Stratégie Nationale Intégrée pour la Jeunesse Villageoise en
-              RDC
-            </h3>
-            <p className="text-sm uppercase tracking-wider font-semibold opacity-90 text-white">
-              (SNIJV – 2026/2036)
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold mb-1 text-accent-gold">
-              Objectif principal :
-            </h4>
-            <p className="opacity-90">
-              Intégrer pleinement la jeunesse rurale dans le développement
-              économique, social et environnemental du pays.
-            </p>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      subtitle: "Axes stratégiques",
-      headline: "Les 5 axes de la SNIJV (part. 1)",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-1 text-sm uppercase">
-              1. Éducation & autonomisation
-            </h4>
-            <p className="text-sm opacity-90">
-              Réforme des filières techniques, formation professionnelle,
-              alphabétisation des femmes, lutte contre l’insécurité alimentaire.
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-1 text-sm uppercase">
-              2. Accès à la terre & entrepreneuriat
-            </h4>
-            <p className="text-sm opacity-90">
-              Sécurisation foncière, valorisation des 80 M ha agricoles,
-              incubation des entrepreneurs ruraux, accès au financement.
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-1 text-sm uppercase">
-              3. Santé & bien-être
-            </h4>
-            <p className="text-sm opacity-90">
-              Amélioration des infrastructures, santé sexuelle et reproductive,
-              lutte contre les mariages précoces, santé mentale.
-            </p>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1593113565215-5d510ee4e4a0?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      subtitle: "Axes stratégiques",
-      headline: "Les 5 axes de la SNIJV (part. 2)",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-1 text-sm uppercase">
-              4. Leadership & participation
-            </h4>
-            <p className="text-sm opacity-90">
-              Participation des jeunes aux décisions locales, leadership
-              féminin, renforcement de la cohésion nationale.
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-1 text-sm uppercase">
-              5. Culture & sport
-            </h4>
-            <p className="text-sm opacity-90">
-              Valorisation des savoirs locaux, développement d'infrastructures
-              culturelles, promotion de l'artisanat et du tourisme rural.
-            </p>
-          </div>
-          <div className="mt-4 p-4 border-l-4 border-accent-gold bg-accent-gold/10 rounded-r-xl">
-            <p className="font-semibold italic text-white/95">
-              Conclusion : Investir dans la jeunesse rurale, c’est investir dans
-              l’avenir durable de la RDC.
-            </p>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1526976663112-00dbf6aa8d0f?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "L'exode rural et ses répercussions sur Kinshasa",
-      content: (
-        <div className="space-y-6">
-          <p>
-            L'ASBL Le Monde Rural a organisé le
-            <span className="italic"> 14 juin 2025</span>, à l’Université
-            Protestante au Congo (UPC), son forum inaugural, marquant
-            officiellement la sortie publique de l’organisation. Le thème
-            choisi, « L’exode rural et ses répercussions sur la ville de
-            Kinshasa », répond à une problématique brûlante en République
-            Démocratique du Congo.
-          </p>
-          <p>
-            L’exode rural, défini comme le déplacement massif et permanent des
-            populations des zones rurales vers les grandes villes, touche
-            particulièrement Kinshasa. La capitale, initialement planifiée pour
-            environ 500 000 habitants, abrite aujourd’hui plus de 15 millions de
-            personnes.
-          </p>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1591115765373-520b7a08332a?q=80&w=2000&auto=format&fit=crop", // Forum setup
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "Cette pression démographique se traduit par :",
-      content: (
-        <div className="space-y-4">
-          <ul className="space-y-3 list-disc pl-5 opacity-90">
-            <li>
-              Une urbanisation anarchique et l'émergence de quartiers précaires,
-            </li>
-            <li>
-              Une pression accrue sur les services sociaux de base (éducation,
-              santé, eau potable),
-            </li>
-            <li>La montée du chômage, particulièrement chez les jeunes,</li>
-            <li>
-              Une insécurité alimentaire liée à la dépendance de la ville
-              vis-à-vis des produits importés,
-            </li>
-            <li>Une déconnexion croissante entre ville et campagne.</li>
-          </ul>
-          <p className="pt-4 font-medium italic border-t border-white/20">
-            C’est dans ce contexte que ce forum a été initié pour réfléchir à
-            des pistes d’action concrètes.
-          </p>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1517457373958-b7bdd058a548?q=80&w=2000&auto=format&fit=crop", // Audience wide
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "Objectifs du forum :",
-      content: (
-        <div className="space-y-4">
-          <ol className="space-y-4 list-decimal pl-5">
-            <li>
-              <span className="font-semibold">Analyser</span> les causes
-              profondes de l'exode rural en RDC.
-            </li>
-            <li>
-              <span className="font-semibold">Mesurer</span> les conséquences
-              sur Kinshasa et ses habitants.
-            </li>
-            <li>
-              <span className="font-semibold">Proposer</span> des actions
-              concrètes en faveur du développement rural et de la stabilisation
-              des populations.
-            </li>
-            <li>
-              <span className="font-semibold">Lancer officiellement</span>{" "}
-              l'ASBL Le Monde Rural comme acteur engagé dans la lutte contre les
-              inégalités.
-            </li>
-          </ol>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2000&auto=format&fit=crop", // Woman speaker
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "Déroulement et points saillants",
-      content: (
-        <div className="space-y-4">
-          <p>
-            Le forum a réuni des étudiants, des professeurs, des experts ainsi
-            que des acteurs de la société civile. Les échanges ont mis en
-            évidence :
-          </p>
-          <ul className="space-y-3 opacity-90">
-            <li className="flex gap-2">
-              <span>•</span>{" "}
-              <span>
-                <span className="font-bold">Infrastructures</span> : routes
-                impraticables, absence d’électricité, faiblesse de l’offre
-                éducative.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span>•</span>{" "}
-              <span>
-                <span className="font-bold">Migrations</span> : Chômage et
-                pauvreté rurale qui poussent les jeunes vers Kinshasa.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span>•</span>{" "}
-              <span>
-                <span className="font-bold">Dépendance</span> : La RDC importe
-                une grande partie de ce qui est consommé en ville.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span>•</span>{" "}
-              <span>
-                <span className="font-bold">Poids sur Kinshasa</span> :
-                embouteillages, criminalité, pression foncière.
-              </span>
-            </li>
-          </ul>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop", // Conference setting
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "Perspectives et pistes d’action (part. 1)",
-      content: (
-        <div className="space-y-6">
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-2 uppercase text-base">
-              1. Soutien à l’agriculture
-            </h4>
-            <p className="text-sm md:text-base opacity-90">
-              Promouvoir l’accès aux intrants agricoles et aux financements.
-              Mettre en place des coopératives pour valoriser la production
-              locale.
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-2 uppercase text-base">
-              2. Infrastructures de base
-            </h4>
-            <p className="text-sm md:text-base opacity-90">
-              Plaidoyer pour des routes rurales praticables et développement des
-              mini-réseaux d’électricité solaire.
-            </p>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1475721027187-4024f0df06ae?q=80&w=2000&auto=format&fit=crop", // Expert speaker
-    },
-    {
-      subtitle: "Forum sur l'exode rural",
-      headline: "Perspectives et pistes d’action (part. 2)",
-      content: (
-        <div className="space-y-6">
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-2 uppercase text-base">
-              3. Formation et entrepreneuriat
-            </h4>
-            <p className="text-sm md:text-base opacity-90">
-              Mise en place de centres de formation ruraux adaptés aux jeunes et
-              promotion de l'agro-transformation.
-            </p>
-          </div>
-          <div className="bg-primary-medium/20 p-5 rounded-2xl border border-white/10">
-            <h4 className="font-bold text-accent-gold mb-2 uppercase text-base">
-              4. Sensibilisation et plaidoyer
-            </h4>
-            <p className="text-sm md:text-base opacity-90">
-              Campagnes auprès des jeunes sur les opportunités rurales et
-              dialogue avec les autorités.
-            </p>
-          </div>
-        </div>
-      ),
-      image:
-        "https://images.unsplash.com/photo-1524178232363-1fb28f74b0cd?q=80&w=2000&auto=format&fit=crop", // Speaker at podium
-    },
+
   ];
 
   const nextSlide = useCallback(() => {
@@ -587,11 +231,10 @@ export default function NewsSection() {
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
-                      className={`h-2.5 hover:cursor-pointer rounded-full transition-all duration-500 ${
-                        index === currentSlide
-                          ? "w-8 bg-accent-gold"
-                          : "w-2.5 bg-white/20 hover:bg-white/40"
-                      }`}
+                      className={`h-2.5 hover:cursor-pointer rounded-full transition-all duration-500 ${index === currentSlide
+                        ? "w-8 bg-accent-gold"
+                        : "w-2.5 bg-white/20 hover:bg-white/40"
+                        }`}
                     />
                   ))}
                 </div>
@@ -639,6 +282,7 @@ export default function NewsSection() {
                     src={slides[currentSlide].image}
                     alt={slides[currentSlide].headline}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </motion.div>
@@ -648,11 +292,10 @@ export default function NewsSection() {
 
             {/* Background Decorative Element */}
             <div
-              className={`absolute z-0 -bottom-6 -right-6 w-1/2 h-1/2 rounded-full blur-[80px] transition-colors duration-1000 ${
-                currentSlide % 2 === 0
-                  ? "bg-primary-medium/30"
-                  : "bg-accent-gold/10"
-              }`}
+              className={`absolute z-0 -bottom-6 -right-6 w-1/2 h-1/2 rounded-full blur-[80px] transition-colors duration-1000 ${currentSlide % 2 === 0
+                ? "bg-primary-medium/30"
+                : "bg-accent-gold/10"
+                }`}
             ></div>
           </div>
         </motion.div>

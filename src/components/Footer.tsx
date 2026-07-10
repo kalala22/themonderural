@@ -114,7 +114,7 @@ export default function Footer() {
             <Link href="/" className="inline-block">
               <div className="relative w-20 h-20">
                 <Image
-                  src="/LMRA Logo Site.png"
+                  src="/LMRA Logo Colors & Withe.png"
                   alt="Le Monde Rural ASBL"
                   fill
                   sizes="80px"

@@ -118,7 +118,7 @@ export default function AxesSection() {
         "Renforcer l'autonomie financière par la formation et les outils numériques. Nous facilitons l'accès au micro-crédit, l'épargne communautaire et l'utilisation des technologies mobiles pour les services financiers en milieu rural.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_4.png"
           alt="Éducation financière & digitale"
           fill
           sizes="50vw"
@@ -172,7 +172,7 @@ export default function AxesSection() {
         "Améliorer l'accès aux soins de base et la prévention dans les zones reculées. Nous intervenons dans la vaccination, la santé maternelle et infantile, et la sensibilisation aux maladies endémiques.",
       detailImage: (
         <Image
-          src="/assets/AZZ_1668.jpg"
+          src="/assets/axe_6.png"
           alt="Santé communautaire"
           fill
           sizes="50vw"
@@ -455,7 +455,7 @@ export default function AxesSection() {
 
               {/* Right Image Column */}
               <div className="hidden md:block w-1/2 relative bg-zinc-100">
-                <div>{selectedAxe.detailImage}</div>
+                <div className="relative w-full h-full">{selectedAxe.detailImage}</div>
 
                 {/* Close Button Desktop */}
                 <button
